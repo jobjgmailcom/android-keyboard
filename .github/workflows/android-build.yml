@@ -33,9 +33,11 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
 
-      - name: Install Android NDK and CMake
-        run: sdkmanager "ndk;28.2.13676358" "cmake;3.22.1"
+      - name: Install Android platform, NDK and CMake
+        run: sdkmanager --install "platforms;android-35" "ndk;28.2.13676358" "cmake;3.22.1"
 
       - name: Build APK
         run: ./gradlew --no-daemon --stacktrace assembleUnstableDebug
