@@ -18,6 +18,10 @@ jobs:
   build:
     name: Build unstable debug APK
     runs-on: ubuntu-24.04
+    env:
+      VERSION_CODE: ${{ github.run_number }}
+      VERSION_NAME: 0.1.30-${{ github.run_number }}
+      BRANCH_NAME: ${{ github.ref_name }}
     steps:
       - name: Check out source and submodules
         uses: actions/checkout@v4
